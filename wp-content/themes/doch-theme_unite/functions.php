@@ -88,4 +88,24 @@ if (!function_exists('my_custom_post_types')):
         ));
     }
 add_action('init', 'my_custom_post_types');
-endif;
+endif; 
+/*
+function out_last_five_posts_function($atts){
+   extract(shortcode_atts(array(
+      'posts' => 5,
+   ), $atts));
+
+   $return_string = '<ul>';
+   query_posts(array('orderby' => 'date', 'order' => 'DESC' , 'showposts' => $posts));
+   if (have_posts()) :
+      while (have_posts()) : the_post();
+         $return_string .= '<li>'.get_the_title().'</li>';
+      endwhile;
+   endif;
+   $return_string .= '</ul>';
+   wp_reset_query();
+   return $return_string;
+}
+
+add_shortcode( 'last_five_posts', 'out_last_five_posts_function' );
+*/
