@@ -1,0 +1,13 @@
+/*
+ Theme Name:   WP Child Theme (дочерняя от Unite)
+ Theme URI:    http://www.wpunite.com/
+ Description:  Unite 
+ Author:       Solodkiy
+ Author URI:   http://www.wpunite.com
+ Template:     unite
+ Version:      1.0.0
+*/
+
+@import url("../unite/style.css");
+
+p {color:green;} 
