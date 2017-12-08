@@ -45,7 +45,12 @@ function deactivate(){
 }
 register_deactivation_hook( __FILE__, 'deactivate');
 
-/* строку кода, чтобы зарегистрировать функцию, которая 
-будет вызываться в момент, когда WordPress формирует тег head страницы
-*/
-add_action ('wp_head', 'the_content');
+
+	
+ //вывод названий категорий фильмов после the_content
+add_filter( 'content', 'the_taxonomies');
+//вывод названий произвольных полей фильмов the_content
+add_filter( 'content', 'the_meta');
+	
+  
+

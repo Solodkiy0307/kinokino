@@ -11,12 +11,15 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 		<?php while ( have_posts() ) : the_post(); ?>
+
 		
 			<?php get_template_part( 'content', 'single' ); ?>
 
-			<?php the_meta();?>
+			<?php //the_meta();?>
+			
+			<?php //the_taxonomies();?>
 
-			<?php echo get_the_term_list($id_post, 'taxnews', '', ' <br />' );?>
+			<?php //echo get_the_term_list($id_post, 'taxnews', '', ' <br />' );?>
 
 			<?php unite_post_nav(); ?>
 

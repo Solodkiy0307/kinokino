@@ -9,7 +9,7 @@ function create_taxnews() {
         'labels' => array(
             'name' => _x( 'Категории фильмов', 'taxonomy general name' ), // Общее название таксономии, используется во множественном числе. Соответствует значению label. По умолчанию: _x( 'Метки', 'taxonomy general name' ) или _x( 'Рубрики', 'taxonomy general name' ).
             'singular_name' => _x( 'Категория фильмов', 'taxonomy singular name' ), // Название таксономии в единственном числе. По умолчанию: _x( 'Метка', 'taxonomy singular name' ) или _x( 'Рубрика', 'taxonomy singular name' ).
-            'menu_name' => __( 'Категории фильмов' ), // Название таксономии в пункте меню. Если не задается, то используется значение label. По умолчанию: 'Метки' или 'Рубрики'.
+            'menu_name' => __( 'Категори фильмов' ), // Название таксономии в пункте меню. Если не задается, то используется значение label. По умолчанию: 'Метки' или 'Рубрики'.
             'all_items' => __( 'Все категории фильмов' ), // Текст всех таксономий. По умолчанию: __( 'Все метки' ) или __( 'Все рубрики' ).
             'edit_item' => __( 'Изменить категорию фильмов' ), // Текст изменения таксономии на странице ее редактирования. По умолчанию: __( 'Изменить метку' ) или __( 'Изменить рубрику' ).
             'view_item' => __( 'Просмотреть категорию фильмов' ), // Текст просмотра таксономии, который появляется в навигационном баре админ-панели на странице редактирования данной таксономии. По умолчанию: __( 'Просмотреть метку' ) или __( 'Просмотреть рубрику' ).
@@ -89,23 +89,34 @@ if (!function_exists('my_custom_post_types')):
     }
 add_action('init', 'my_custom_post_types');
 endif; 
-/*
-function out_last_five_posts_function($atts){
-   extract(shortcode_atts(array(
-      'posts' => 5,
-   ), $atts));
 
-   $return_string = '<ul>';
-   query_posts(array('orderby' => 'date', 'order' => 'DESC' , 'showposts' => $posts));
-   if (have_posts()) :
-      while (have_posts()) : the_post();
-         $return_string .= '<li>'.get_the_title().'</li>';
-      endwhile;
-   endif;
-   $return_string .= '</ul>';
-   wp_reset_query();
-   return $return_string;
+
+
+/*
+$args2 = array(
+    'numberposts' => 5,
+    'custom_type' => 'films',
+    'category'    => 0,
+    'orderby'     => 'date',
+    'order'       => 'DESC',
+    'include'     => array(),
+    'exclude'     => array(),
+    'meta_key'    => '',
+    'meta_value'  =>'',
+    'post_type'   => 'post',
+    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+);
+
+$posts = get_posts( $args2 );
+
+foreach($posts as $post){ setup_postdata($post);
+    // формат вывода
+    echo 'ну и....';
 }
 
-add_shortcode( 'last_five_posts', 'out_last_five_posts_function' );
-*/
+wp_reset_postdata(); // сброс)*/
+/*
+add_shortcode('dima', 'get_posts' );
+add_action('get_posts', 'dima');
+ */
+
