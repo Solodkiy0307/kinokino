@@ -48,9 +48,9 @@ register_deactivation_hook( __FILE__, 'deactivate');
 
 	
  //вывод названий категорий фильмов после the_content
-add_filter( 'content', 'the_taxonomies');
+add_filter( 'the_content', 'the_taxonomies');
 //вывод названий произвольных полей фильмов the_content
-add_filter( 'content', 'the_meta');
+add_filter( 'the_content', 'the_meta');
 	
   
 
