@@ -34,14 +34,14 @@ function create_taxnews() {
         'meta_box_cb' => null, // Обеспечивает показ метабокса с таксономией в записи. По умолчанию: null.
         'show_admin_column' => false, // Позволяет автоматическое создание столбцов таксономии в таблице ассоциативных типов постов. По умолчанию: false.
         'description' => '', // Подключает описание таксономии в таблице со всеми таксономиями. По умолчанию: ''
-        'hierarchical' => true, // Делает таксономию древовидной как рубрики или недревовидной как метки. По умолчанию: false.
+        'hierarchical' => false, // Делает таксономию древовидной как рубрики или недревовидной как метки. По умолчанию: false.
         'update_count_callback' => '', // Название функции, которую вызовут, когда количество ассоциативных типов объектов, таких как запись (пост), будет обновлено. Действует во многом как хук. По умолчанию: ''.
         'query_var' => true, // Значение запроса. False, чтобы отключить. Можно задать свое значение. По умолчанию: true.
         // Перезапись URL. По умолчанию: true.
         'rewrite' => array(
             'slug' => 'taxnews', // Текст в ЧПУ. По умолчанию: название таксономии.
             'with_front' => false, // Позволяет ссылку добавить к базовому URL.
-            'hierarchical' => true, // Использовать (true) или не использовать (false) древовидную структуру ссылок. По умолчанию: false.
+            'hierarchical' => false, // Использовать (true) или не использовать (false) древовидную структуру ссылок. По умолчанию: false.
             'ep_mask' => EP_NONE, // Перезаписывает конечное значение таксономии. По умолчанию: EP_NONE.
         ),
         /*
@@ -91,11 +91,34 @@ add_action('init', 'my_custom_post_types');
 endif; 
 
 
+/*
+function my_tax( $content ) {
+    if (is_home()){
+    $tax = the_taxonomies();
+    $content = $tax . $content;
+    return $content;
+}
+}
+add_filter( 'wp_link_pages', 'my_tax');
+
+
+function my_meta( $content ) {
+    if (is_home()){
+    $met = the_meta();
+    $content = $met . $content;
+    return $content;
+}
+}
+add_filter( 'wp_link_pages', 'my_meta');
+*/
+
+
+
 
 /*
 $args2 = array(
     'numberposts' => 5,
-    'custom_type' => 'films',
+    'custom_type' => 'post',
     'category'    => 0,
     'orderby'     => 'date',
     'order'       => 'DESC',
@@ -114,9 +137,7 @@ foreach($posts as $post){ setup_postdata($post);
     echo 'ну и....';
 }
 
-wp_reset_postdata(); // сброс)*/
-/*
-add_shortcode('dima', 'get_posts' );
-add_action('get_posts', 'dima');
- */
+wp_reset_postdata(); // сброс)
 
+add_shortcode('dima', 'get_posts' );
+*/
