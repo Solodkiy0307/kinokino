@@ -226,20 +226,3 @@ function of_get_option( $name, $default = false ) {
   return $default;
 }
 endif;
-?>
-
-
-<ul>
-<?php 
-// новая функция для шоткода
-global $post;
-$args = array( 'posts_per_page' => 4, 'offset'=> 1, 'category' => 1 );
-$myposts = get_posts( $args );
-foreach( $myposts as $post ){ setup_postdata($post);
-    ?>
-    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-    <?php
-}
-wp_reset_postdata();
-?>
-</ul>

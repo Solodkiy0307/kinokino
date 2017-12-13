@@ -89,55 +89,27 @@ if (!function_exists('my_custom_post_types')):
     }
 add_action('init', 'my_custom_post_types');
 endif; 
+?>
 
 
-/*
-function my_tax( $content ) {
-    if (is_home()){
-    $tax = the_taxonomies();
-    $content = $tax . $content;
-    return $content;
+<ul>
+<?php
+function my_get_posts($myposts){
+global $post; 
+
+$args = array( 
+    'post_type'=> 'Films', 
+    'post_status' => 'publish', 
+    'numberposts' => 5 );
+$myposts = get_posts( $args );
+foreach( $myposts as $post ){ setup_postdata($post);
+    ?>
+    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+    <?php 
 }
+wp_reset_postdata();
 }
-add_filter( 'wp_link_pages', 'my_tax');
-
-
-function my_meta( $content ) {
-    if (is_home()){
-    $met = the_meta();
-    $content = $met . $content;
-    return $content;
-}
-}
-add_filter( 'wp_link_pages', 'my_meta');
-*/
-
-
-
-
-/*
-$args2 = array(
-    'numberposts' => 5,
-    'custom_type' => 'post',
-    'category'    => 0,
-    'orderby'     => 'date',
-    'order'       => 'DESC',
-    'include'     => array(),
-    'exclude'     => array(),
-    'meta_key'    => '',
-    'meta_value'  =>'',
-    'post_type'   => 'post',
-    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-);
-
-$posts = get_posts( $args2 );
-
-foreach($posts as $post){ setup_postdata($post);
-    // формат вывода
-    echo 'ну и....';
-}
-
-wp_reset_postdata(); // сброс)
-
-add_shortcode('dima', 'get_posts' );
-*/
+?>
+</ul>
+<?php
+add_shortcode('dima', 'my_get_posts' );

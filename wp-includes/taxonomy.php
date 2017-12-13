@@ -4030,7 +4030,7 @@ function the_taxonomies( $args = array() ) {
 	$defaults = array(
 		'post' => 0,
 		'before' => '',
-		'sep' => ' ',
+		'sep' => ',',
 		'after' => '',
 	);
 

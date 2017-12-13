@@ -86,3 +86,7 @@ if ( !defined('ABSPATH') )
 
 /** Инициализирует переменные WordPress и подключает файлы. */
 require_once(ABSPATH . 'wp-settings.php');
+
+define('WP_MEMORY_LIMIT', '64M'); // Можно и 128 поставить
+ini_set('pcre.recursion_limit', 20000000);
+ini_set('pcre.backtrack_limit', 1000000);
